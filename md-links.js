@@ -1,21 +1,79 @@
-const links = (path) => {
-    fs.readFile(path ,'utf8', (err,data)=>{
-    if (err) {
-  throw err
+'use strict'
+module.exports = {
+
+  validateAndStats: function() {
+    let total = 3
+    let unique = 2
+    let broken = 1
+
+    const validateAndStats = {
+      total: total,
+      unique: unique,
+      broken: broken,
+    };
+    return validateAndStats;
+  },
+
+};
+
+// mdLinks module requirement
+const mdLinks = require("./md-links");
+// File System requirement
+const fs = require('fs');
+// Markdown Link Extractor requirement
+const markdownLinkExtractor = require('markdown-link-extractor');
+// Options
+var validate = false;
+var stats = false;
+
+/*
+process.argv is an array containing the command line arguments.
+The first element will be 'node', the second element will be
+the name of the JavaScript file. The next elements will be
+any additional command line arguments.
+*/
+process.argv.forEach((option, index, array) => {
+  console.log("index:", index, "value:", option);
+  if(index > 1 && index < 5) {
+    if(option == "--validate" || option == "--v") {
+      validate = true;
+    } else if(option == "--stats" || option == "--s") {
+      stats = true;
+    } else {
+      console.log("Opción no válida:", option);
     }
-    
-  let links = []
-  const renderer = new marked.Renderer();
-  renderer.link = function (href,title,text) {
-  links.push ({
-    href:href,
-    text:text,
-    file:path,
-  })
   }
-  marked(data,{renderer:renderer})
-  console.log(links)
- })
- }
-  console.log(links('./prueba.md'))
-  
+});
+
+console.log("validate:", validate);
+console.log("stats:", stats);
+
+if(validate && stats) {
+  console.log("both");
+} else if(validate) {
+  console.log("only validate");
+} else if(stats) {
+  console.log("only stats");
+}
+
+// Read Markdown file function
+const readMarkdownFile = (callback) => {
+  fs.readFile("./prueba.md", 'utf-8', (error, content) => {
+
+    if(error) {
+      return callback(error)
+    }
+
+    // Since there's no error at this point, we return null instead
+    callback(null, content)
+
+  })
+}
+
+// Read markdown file function call
+readMarkdownFile((error, content) => {
+  console.log(content)
+});
+
+console.log(mdLinks.validateAndStats());
+
