@@ -2,10 +2,16 @@
   "name": "md-links",
   "version": "0.1.0",
   "dependencies": {
+    "fetch": "^1.1.0",
     "filehound": "^1.17.0",
     "markdown-link-extractor": "^1.2.1",
     "marked": "^0.6.2",
+    "node-fetch": "^2.6.0",
     "path": "^0.12.7",
-    "require-path": "^0.3.0"
+    "require-path": "^0.3.0",
+    "url-exists": "^1.0.3"
+  },
+  "bin": {
+    "md-link": "index.js"
   }
 }
