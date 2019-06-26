@@ -1,97 +1,41 @@
-// 'use strict'
-// module.exports = {
-
-//   validateAndStats: function() {
-//     let total = 3
-//     let unique = 2
-//     let broken = 1
-
-//     const validateAndStats = {
-//       total: total,
-//       unique: unique,
-//       broken: broken,
-//     };
-//     return validateAndStats;
-//   },
-
+// // lee los archivos md de un directorio
+// const files = (path) =>{
+//   FileHound.create()
+//   .paths(path)
+//   .ext('md')
+//   .find()
+//  .then(files =>{
+// files.forEach(file =>console.log('Found file', file));
+// })
 // };
+// console.log(files('../SCL009-md-links'))
 
-// // mdLinks module requirement
-// const mdLinks = require("./md-links");
-// // File System requirement
-// const fs = require('fs');
-// // Markdown Link Extractor requirement
-// const markdownLinkExtractor = require('markdown-link-extractor');
-// // Options
-// var validate = false;
-// var stats = false;
-
-// /*
-// process.argv is an array containing the command line arguments.
-// The first element will be 'node', the second element will be
-// the name of the JavaScript file. The next elements will be
-// any additional command line arguments.
-// */
-// process.argv.forEach((option, index, array) => {
-//   console.log("index:", index, "value:", option);
-//   if(index > 1 && index < 5) {
-//     if(option == "--validate" || option == "--v") {
-//       validate = true;
-//     } else if(option == "--stats" || option == "--s") {
-//       stats = true;
-//     } else {
-//       console.log("Opción no válida:", option);
-//     }
-//   }
-// });
-
-// console.log("validate:", validate);
-// console.log("stats:", stats);
-
-// if(validate && stats) {
-//   console.log("both");
-// } else if(validate) {
-//   console.log("only validate");
-// } else if(stats) {
-//   console.log("only stats");
-// }
-
-// // Read Markdown file function
-// const readMarkdownFile = (callback) => {
-//   fs.readFile("./prueba.md", 'utf-8', (error, content) => {
-
-//     if(error) {
-//       return callback(error)
-//     }
-
-//     // Since there's no error at this point, we return null instead
-//     callback(null, content)
-
+//lee archivos por el momento no lo cocuparemos por ser poco especifico
+// const links = (path)=>{
+//   fs.readdir(path,'utf8', (err, data)=>{
+// if (err){
+//   throw err;
+// } 
+// console.log(data)
 //   })
 // }
+// console.log(links('../SCL009-md-links'))
 
-// // Read markdown file function call
-// readMarkdownFile((error, content) => {
-//   console.log(content)
-// });
 
-// console.log(mdLinks.validateAndStats());
+const fs = require("fs");
 
-// const fetch = require('node-fetch')
-//  let promesa = fetch('https://api.github.com/users/mitocode21');
-//  promesa.then((res)=>{
-//    return res.json();
-//  }).then((json)=>{
-//    console.log(json)
-//  });
+let path = "/path/to/something";
 
-var urlExists = require('url-exists');
- 
-urlExists('https://www.google.com', function(err, exists) {
-  console.log(exists); // true
+fs.lstat(path, (err, stats) => {
+
+    if(err)
+        return console.log(err); //Handle error
+
+    console.log(`Is file: ${stats.isFile()}`);
+    console.log(`Is directory: ${stats.isDirectory()}`);
+    console.log(`Is symbolic link: ${stats.isSymbolicLink()}`);
+    console.log(`Is FIFO: ${stats.isFIFO()}`);
+    console.log(`Is socket: ${stats.isSocket()}`);
+    console.log(`Is character device: ${stats.isCharacterDevice()}`);
+    console.log(`Is block device: ${stats.isBlockDevice()}`);
 });
- 
-urlExists('https://www.facebook.com', function(err, exists) {
-  console.log(exists); // false
-});
-
