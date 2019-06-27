@@ -9,12 +9,19 @@ const path= require('path')
 
 
 let pathUser= process.argv[2];//RUTA DEL ARCHIVO MD
-// let optionValidate = process.argv[3];//OPCION QUE INGRESA EL USUARIO EN ESTE CASO --VALIDATE
-// let optionStatus = process.argv[4];//OPCION QUE INGRESA EL USUARIO EN ESTE CASO --STATUS
- 
 
 let pathFile = path.resolve(pathUser)
 console.log('ruta del usuario:',pathFile)
+
+function directory(pathFile) {
+fs.lstat(pathFile, (err, stats) => {
+      if(err)
+          return console.log(err)
+      console.log(`Is file: ${stats.isFile()}`);
+      console.log(`Is directory: ${stats.isDirectory()}`);
+  });
+}console.log(directory())
+
 
 
 

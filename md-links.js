@@ -24,18 +24,13 @@
 
 const fs = require("fs");
 
-let path = "/path/to/something";
+let path = process.argv[2]
 
 fs.lstat(path, (err, stats) => {
-
+console.log('entrando')
     if(err)
         return console.log(err); //Handle error
 
     console.log(`Is file: ${stats.isFile()}`);
     console.log(`Is directory: ${stats.isDirectory()}`);
-    console.log(`Is symbolic link: ${stats.isSymbolicLink()}`);
-    console.log(`Is FIFO: ${stats.isFIFO()}`);
-    console.log(`Is socket: ${stats.isSocket()}`);
-    console.log(`Is character device: ${stats.isCharacterDevice()}`);
-    console.log(`Is block device: ${stats.isBlockDevice()}`);
 });
