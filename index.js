@@ -1,15 +1,13 @@
 #!/usr/bin/env node
 
-
 const fs = require('fs');
 const marked = require('marked');
 const FileHound = require('filehound');
 const path= require('path')
 // const mdLinks = require ('./md-links')
 
-
-
-let pathUser= process.argv[2];//RUTA DEL ARCHIVO MD
+//RUTA DEL ARCHIVO MD
+let pathUser= process.argv[2];
 
 let pathFile = path.resolve(pathUser)
 // console.log('ruta del usuario:',pathFile)
@@ -23,17 +21,10 @@ fs.lstat(path, (err, stats) => {
       directory(path);
       }else {
      console.log('soy file')
+     links(pathUser)
       }
   });
 };
-
-
-
-
-
-
-
-
 
 //-------CREAMOS UNA CONSTANTE PARA QUE LEA UN ARCHIVO CON UN PATH (RUTA) ESPECIFICA , USAMOS MARKED Y FS---
 
@@ -56,7 +47,6 @@ console.log(links)
   })
 }
 
-
 //---------- CREAMOS UNA CONSTANTE PARA LEER ARCHIVOS MD DE UN DIRECTORIO---------------------
 
 function directory(path){
@@ -70,11 +60,3 @@ files.forEach(file => console.log(links(file)));
 };
 
 isFileOrDirectory(pathFile)
-
-
-
-
-
-
-
-
