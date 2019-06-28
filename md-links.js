@@ -4,28 +4,54 @@ const FileHound = require('filehound');
 const path= require('path')
 
 
-
-
-
-
-function readUserFiles (pathUser){
-  fs.readFile(pathUser,'utf8', (err, data)=>{
-if (err){
-throw err;
-} 
-let links = [];
-const renderer = new marked.Renderer();
-renderer.link = function (href, title, text){
-  links.push({
-    href:href,
-    text:text,
-    file:pathUser
+function readUserFile(pathUser){
+return new Promise((resolve,reject)=> {
+  fs.readFile(pathUser , 'utf8' , (error,data)=> {
+    if (error){
+      reject(error);
+    } else {
+      let links = []
+      const renderer = new marked.Renderer();
+      renderer.link = function (href, title, text){
+      links.push({
+      href:href,
+     text:text,
+     file:pathUser
   })
 }
 marked(data,{renderer:renderer});
-console.log(links)
+resolve(links);
+} 
   })
-}
+})
+};
+
+
+
+
+
+
+
+
+
+// function readUserFiles (pathUser){
+//   fs.readFile(pathUser,'utf8', (err, data)=>{
+// if (err){
+// throw err;
+// } 
+// let links = [];
+// const renderer = new marked.Renderer();
+// renderer.link = function (href, title, text){
+//   links.push({
+//     href:href,
+//     text:text,
+//     file:pathUser
+//   })
+// }
+// marked(data,{renderer:renderer});
+// console.log(links)
+//   })
+// }
 
 
 function readUserDirectory(path){
@@ -34,10 +60,25 @@ function readUserDirectory(path){
   .ext('md')
   .find()
  .then(files =>{
-files.forEach(file => console.log(readUserFiles(file)));
+files.forEach(file =>
+  readUserFile(file)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  );
 })
 };
- module.exports.readUserFiles=readUserFiles
+
+function readOptions(path) {
+readU
+}
+
+
+ module.exports.readOptions=readOptions
+ module.exports.readUserFile=readUserFile
  module.exports.readUserDirectory=readUserDirectory
 
 

@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
-const marked = require('marked');
-const FileHound = require('filehound');
 const path= require('path')
 const mdLinks = require ('./md-links')
 
@@ -21,10 +19,17 @@ fs.lstat(path, (err, stats) => {
       mdLinks.readUserDirectory(path);
       }else {
      console.log('soy file')
-     mdLinks.readUserFiles(pathUser)
-      }
-  });
-};
+     mdLinks.readUserFile(pathUser)
+       .then(res=> {
+         console.log(res)
+       }).catch(err=> {
+       console.log(err)
+       })
+     }
+      })
+    }
+
+
 
 //-------CREAMOS UNA CONSTANTE PARA QUE LEA UN ARCHIVO CON UN PATH (RUTA) ESPECIFICA , USAMOS MARKED Y FS---
 
