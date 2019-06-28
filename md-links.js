@@ -2,17 +2,9 @@
 const FileHound = require('filehound');
 let pathUser= process.argv[2];
 const path= require('path')
+const fs = require('fs');
 
-const files = (pathUser) =>{
-  FileHound.create()
-  .paths(pathUser)
-  .ext('md')
-  .find()
- .then(files =>{
-files.forEach(file =>console.log('Found file', file));
-})
-};
-console.log(files(pathUser))
+
 // ../SCL009-md-links'
 
 // const fs = require("fs");
@@ -27,3 +19,35 @@ console.log(files(pathUser))
 //     console.log(`Is file: ${stats.isFile()}`);
 //     console.log(`Is directory: ${stats.isDirectory()}`);
 // });
+
+function links (path){
+  fs.readFile(path,'utf8', (err, data)=>{
+if (err){
+
+  throw err;
+} 
+let links = [];
+const renderer = new marked.Renderer();
+renderer.link = function (href, title, text){
+  links.push({
+    href:href,
+    text:text,
+    file:path
+  })
+}
+marked(data,{renderer:renderer});
+console.log(links)
+  })
+}
+console.log(links(pathUser))
+
+const files = (path) =>{
+  FileHound.create()
+  .paths(path)
+  .ext('md')
+  .find()
+ .then(files =>{
+  files.forEach(file => links(file));
+})
+};
+console.log(files(path))
