@@ -18,17 +18,17 @@ fs.lstat(path, (err, stats) => {
         console.log(err);
       } else if (stats.isDirectory()){
       console.log( 'soy directorio');
-      directory(path);
+      readUserDirectory(path);
       }else {
      console.log('soy file')
-     links(pathUser)
+     readUserFiles(pathUser)
       }
   });
 };
 
 //-------CREAMOS UNA CONSTANTE PARA QUE LEA UN ARCHIVO CON UN PATH (RUTA) ESPECIFICA , USAMOS MARKED Y FS---
 
-function links (pathUser){
+function readUserFiles (pathUser){
   fs.readFile(pathUser,'utf8', (err, data)=>{
 if (err){
 throw err;
@@ -49,13 +49,13 @@ console.log(links)
 
 //---------- CREAMOS UNA CONSTANTE PARA LEER ARCHIVOS MD DE UN DIRECTORIO---------------------
 
-function directory(path){
+function readUserDirectory(path){
   FileHound.create()
   .paths(path)
   .ext('md')
   .find()
  .then(files =>{
-files.forEach(file => console.log(links(file)));
+files.forEach(file => console.log(readUserFiles(file)));
 })
 };
 
