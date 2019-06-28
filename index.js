@@ -60,3 +60,6 @@ files.forEach(file => console.log(readUserFiles(file)));
 };
 
 isFileOrDirectory(pathFile)
+
+
+
