@@ -27,13 +27,6 @@ resolve(links);
 };
 
 
-
-
-
-
-
-
-
 // function readUserFiles (pathUser){
 //   fs.readFile(pathUser,'utf8', (err, data)=>{
 // if (err){
@@ -72,12 +65,6 @@ files.forEach(file =>
 })
 };
 
-function readOptions(path) {
-readU
-}
-
-
- module.exports.readOptions=readOptions
  module.exports.readUserFile=readUserFile
  module.exports.readUserDirectory=readUserDirectory
 

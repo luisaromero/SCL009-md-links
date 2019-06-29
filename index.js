@@ -29,16 +29,6 @@ fs.lstat(path, (err, stats) => {
       })
     }
 
-
-
-//-------CREAMOS UNA CONSTANTE PARA QUE LEA UN ARCHIVO CON UN PATH (RUTA) ESPECIFICA , USAMOS MARKED Y FS---
-
-
-
-//---------- CREAMOS UNA CONSTANTE PARA LEER ARCHIVOS MD DE UN DIRECTORIO---------------------
-
-
-
 isFileOrDirectory(pathFile)
 
 
