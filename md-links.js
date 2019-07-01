@@ -2,7 +2,6 @@
 const fs = require('fs');
 const marked = require('marked');
 const FileHound = require('filehound');
-const path= require('path')
 const fetch= require('node-fetch');
 
 
@@ -24,7 +23,7 @@ return new Promise((resolve,reject)=> {
 marked(data,{renderer:renderer});
 resolve(links);
   if (process.argv[3]== "--validate"||process.argv[3] == "--v"){  
-    getValidate(links)
+    validateUrl(links)
     }
 
 }
@@ -43,14 +42,11 @@ files.forEach(file =>
     .then(res => {
       console.log(res)
     })
-    .catch(err => {
-      console.log(err);
-    })
   );
 })
 };
 
-function getValidate(url){
+function validateUrl(url){
   url.forEach(function (element) {
               fetch(element.href).then((res)=>{
                   console.log((res.url) , (res.statusText),(res.status));
@@ -60,7 +56,7 @@ function getValidate(url){
               })
            })
           }
-           module.exports.getValidate=getValidate
+           module.exports.validateUrl=validateUrl
            module.exports.readUserFile=readUserFile
            module.exports.readUserDirectory=readUserDirectory
 
@@ -78,7 +74,6 @@ function getValidate(url){
 //       })
 //   })
 // }
-
 
 // getData(url)
 // .then(res => {

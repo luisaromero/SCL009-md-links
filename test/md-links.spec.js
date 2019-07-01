@@ -14,10 +14,14 @@ describe('readUserDirectory',() => {
   it('si ha ingresado un directorio deberia retornar un arreglo y un objeto', async() => {
  await expect(mdLinks.readUserDirectory('../SCL009-md-links/test')).resolves.toEqual([{"file": "./prueba.md", "href": "https://github.com/workshopper/learnyounode", "text": "learnyounode"}]);
   });
-  it('Debería retornar error, al leer un directorio  que no existe ',async()  => {
-   await expect(mdLinks.readUserDirectory('../SCL009-md-links/test')).rejects.toThrow("Error: ENOENT: no such file or directory");
+});
+
+describe('validateUrl',() => {
+  it('si ha ingresado un directorio deberia retornar un arreglo y un objeto', async() => {
+ await expect(mdLinks.validateUrl('./prueba.md')).resolves.toEqual([{"file": "./prueba.md", "href": "https://github.com/workshopper/learnyounode", "text": "learnyounode"}]);
   });
 });
+
 
 
  
