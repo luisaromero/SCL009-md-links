@@ -7,6 +7,7 @@ const mdLinks = require ('./md-links')
 //RUTA DEL ARCHIVO MD
 let pathUser= process.argv[2];
 let pathValidate =process.argv[3];
+let pathStats=process.argv[4];
 
 let pathFile = path.resolve(pathUser)
 
@@ -19,7 +20,9 @@ fs.lstat(command, (err, stats) => {
       mdLinks.readUserDirectory(command)
 } else if (path.extname(pathUser) !== ".md") {
  console.log('No es un archivo extension md')
-    } else if (pathValidate == "--validate"||pathValidate == "--v"){
+    } else if (process.argv[4]== "--stats"||process.argv[4] == "--s"){ 
+      console.log('stats') 
+    }else if (pathValidate == "--validate"||pathValidate == "--v"){
       mdLinks.readUserFile(pathUser)
       }else{
      console.log('Ingresaste un archivo')

@@ -2,6 +2,7 @@
   "name": "md-links",
   "version": "0.1.0",
   "dependencies": {
+    "chalk": "^2.4.2",
     "eslint": "^6.0.1",
     "eslint-plugin-jest": "^22.7.1",
     "fetch": "^1.1.0",
@@ -15,15 +16,14 @@
     "path": "^0.12.7",
     "require-path": "^0.3.0",
     "test": "^0.6.0",
-    "url-exists": "^1.0.3",
-    "prepublish" :"npm run test"
+    "url-exists": "^1.0.3"
   },
   "bin": {
     "md-link": "index.js"
   },
   "scripts": {
     "test": "jest --coverage",
-   "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.4.5"
