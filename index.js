@@ -18,15 +18,15 @@ fs.lstat(command, (err, stats) => {
       if(err){
         console.log('Ingresa archivo o directorio valido');
       } else if (stats.isDirectory()){
-      console.log( 'soy directorio');
+      console.log( 'soy un directorio');
       mdLinks.readUserDirectory(command)
     } else if (path.extname(pathUser) !== ".md") {
  console.log('No es un archivo extension md')
-    } else if (pathValidate == "validate"){
+    } else if (pathValidate == "--validate"||pathValidate == "--v"){
       mdLinks.readUserFile(pathUser)
       console.log('jeje')
       }else{
-     console.log('soy file')
+     console.log('soy un archivo')
      mdLinks.readUserFile(pathUser)
        .then(res=> {
          console.log(res)

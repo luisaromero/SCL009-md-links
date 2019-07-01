@@ -22,8 +22,11 @@ return new Promise((resolve,reject)=> {
   })
 }
 marked(data,{renderer:renderer});
-getValidate(links)
 resolve(links);
+  if (process.argv[3]== "--validate"||process.argv[3] == "--v"){  
+    getValidate(links)
+    }
+
 }
   })
 })
@@ -50,7 +53,7 @@ files.forEach(file =>
 function getValidate(url){
   url.forEach(function (element) {
               fetch(element.href).then((res)=>{
-                  console.log((element.href),(res.statusText),(res.status));
+                  console.log((res.url) , (res.statusText),(res.status));
               })
               .catch (error =>{
                   console.log(error.message)
@@ -60,32 +63,8 @@ function getValidate(url){
            module.exports.getValidate=getValidate
            module.exports.readUserFile=readUserFile
            module.exports.readUserDirectory=readUserDirectory
-//  function linkValidate(links){
-//   let status =[];
-//   let urls =[];
-//  links.forEach(element => {
-//       fetch(element.href)
-//      .then (res =>{
-//          //console.log(res.url, res.status, res.statusText);
-//          status= res.status;
-//          urls = res.url;
-//          console.log('Estos links están validados correctamente'),( urls, status);
-
-//      })
-
-//      .catch(err=>{
-//        console.log('links con errores'),chalk.red.bold(err.message, err.code);
-
-//      })
-
-//    })
-//   }
-
-
-
 
 // var fetchUrl = require("fetch").fetchUrl;
-
 
 
 // const getData = (url) => {
