@@ -1,9 +1,9 @@
-let promesa=new Promise((resolve,reject)=>{
- resolve('exito al procesar')
-});
-promesa.then((resultado)=>{
- console.log(resultado)
-});
+// let promesa=new Promise((resolve,reject)=>{
+//  resolve('exito al procesar')
+// });
+// promesa.then((resultado)=>{
+//  console.log(resultado)
+// });
 
 // 'use strict'
 // module.exports = {
@@ -92,13 +92,26 @@ promesa.then((resultado)=>{
 //    console.log(json)
 //  });
 
-var urlExists = require('url-exists');
+// var urlExists = require('url-exists');
  
-urlExists('https://www.google.com', function(err, exists) {
-  console.log(exists); // true
-});
+// urlExists('https://www.google.com', function(err, exists) {
+//   console.log(exists); // true
+// });
  
-urlExists('https://www.facebook.com/JEJEXDJDSHHKDSAJDHH', function(err, exists) {
-  console.log(exists); // false
-});
+// urlExists('https://www.facebook.com/JEJEXDJDSHHKDSAJDHH', function(err, exists) {
+//   console.log(exists); // false
+// });
+const fetch = require('node-fetch');
 
+
+async function getValidate(url){
+  let url = "https://www.google.com";
+  url.forEach(function (element) {
+              fetch(element.link).then((res)=>{
+                  console.log(chalk.blue(path.resolve(process.argv[2])), chalk.red(element.link), chalk.green(res.statusText), chalk.yellow(res.status), chalk.red(element.title));
+              })
+              .catch (error =>{
+                  console.log(error.message)
+              })
+           })
+} getValidate(url)

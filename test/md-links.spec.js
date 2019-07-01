@@ -6,7 +6,7 @@ describe('readUserFile', () => {
    await expect(mdLinks.readUserFile('./prueba.md')).resolves.toEqual([{"file": "./prueba.md", "href": "https://github.com/workshopper/learnyounode", "text": "learnyounode"}]);
   });
   it('Debería retornar error, al leer un archivo que no existe ', async()  => {
-    await expect(mdLinks.readUserFile('./prueba.txt')).rejects.toThrow("ENOENT: no such file or directory, open 'C:\\Users\\Olidata\\Desktop\\SCL009-md-links\\prueba.txt");
+    await expect(mdLinks.readUserFile('./hola.txt')).rejects.toThrow("ENOENT: no such file or directory, open 'C:\\Users\\Olidata\\Desktop\\SCL009-md-links\\hola.txt");
   });
 });
 
