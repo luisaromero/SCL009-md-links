@@ -10,22 +10,19 @@ let pathValidate =process.argv[3];
 
 let pathFile = path.resolve(pathUser)
 
-// console.log('ruta del usuario:',pathFile)
-
 function fileOrDirectory(command) {
 fs.lstat(command, (err, stats) => {
       if(err){
         console.log('Ingresa archivo o directorio valido');
       } else if (stats.isDirectory()){
-      console.log( 'soy un directorio');
+      console.log( 'Ingresaste un directorio');
       mdLinks.readUserDirectory(command)
 } else if (path.extname(pathUser) !== ".md") {
  console.log('No es un archivo extension md')
     } else if (pathValidate == "--validate"||pathValidate == "--v"){
       mdLinks.readUserFile(pathUser)
-      console.log('jeje')
       }else{
-     console.log('soy un archivo')
+     console.log('Ingresaste un archivo')
      mdLinks.readUserFile(pathUser)
        .then(res=> {
          console.log(res)

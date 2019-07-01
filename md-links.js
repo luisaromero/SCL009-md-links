@@ -1,4 +1,5 @@
 "use strict"
+
 const fs = require('fs');
 const marked = require('marked');
 const FileHound = require('filehound');
@@ -31,7 +32,7 @@ resolve(links);
 })
 };
 
- async function readUserDirectory(path){
+ function readUserDirectory(path){
   FileHound.create()
   .paths(path)
   .ext('md')
@@ -60,25 +61,3 @@ function validateUrl(url){
            module.exports.readUserFile=readUserFile
            module.exports.readUserDirectory=readUserDirectory
 
-// var fetchUrl = require("fetch").fetchUrl;
-
-
-// const getData = (url) => {
-//   return new Promise ((resolve, reject)=> {
-//     fetchUrl(url, (error, meta, body) =>{
-//           if (meta){
-//               resolve(meta.status);
-//           }else{
-//               reject (error);
-//           }
-//       })
-//   })
-// }
-
-// getData(url)
-// .then(res => {
-//   console.log("El estado del sitio", url, "es:",res)
-// })
-// .catch(err => {
-//   console.log(err);
-// })

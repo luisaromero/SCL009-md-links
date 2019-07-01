@@ -15,9 +15,8 @@ describe('readUserDirectory',() => {
  await expect(mdLinks.readUserDirectory('../SCL009-md-links/test')).resolves.toEqual([{"file": "./prueba.md", "href": "https://github.com/workshopper/learnyounode", "text": "learnyounode"}]);
   });
 });
-
 describe('validateUrl',() => {
-  it('si ha ingresado un directorio deberia retornar un arreglo y un objeto', async() => {
+  it('si ingresa directorio o archivo y --validate retorna la validacion de la url', async() => {
  await expect(mdLinks.validateUrl('./prueba.md')).resolves.toEqual([{"file": "./prueba.md", "href": "https://github.com/workshopper/learnyounode", "text": "learnyounode"}]);
   });
 });
