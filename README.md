@@ -29,6 +29,8 @@ Para instalar la dependencia debes escribir en la terminal :
 ## Como usarlo
 
  Ingresa en la terminal al comando md-link , seguido del archivo md (ejemplo README.md) para ver los links que posee el archivo especificado.
+
+ 
 ![archivo](https://img.fenixzone.net/i/p9TqYPe.png)
 
 Ingresa en la terminal al comando md-link , seguido de un directorio (ejemplo ../SCL009-md-links) para ver los archivos md que posee el directorio especificadoy sus respectivos links
