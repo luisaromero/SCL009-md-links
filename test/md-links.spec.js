@@ -10,17 +10,27 @@ describe('readUserFile', () => {
   });
 });
 
-describe('readUserDirectory',() => {
-  it('si ha ingresado un directorio deberia retornar un arreglo y un objeto', async() => {
- await expect(mdLinks.readUserDirectory('../SCL009-md-links/test')).resolves.toEqual([{"file": "./prueba.md", "href": "https://github.com/workshopper/learnyounode", "text": "learnyounode"}]);
+test('readUserDirectory',async() => {
+ await it('si ha ingresado un directorio deberia retornar un arreglo y un objeto', () => {
+  expect(mdLinks.readUserDirectory('../SCL009-md-links/test')).resolves.toEqual([{"file": "./prueba.md", "href": "https://github.com/workshopper/learnyounode", "text": "learnyounode"}]);
   });
 });
-// describe('validateUrl',() => {
-//   it('si ingresa directorio o archivo y --validate retorna la validacion de la url', async() => {
-//  await expect(mdLinks.validateUrl('./prueba.md')).resolves.toEqual([{"file": "./prueba.md", "href": "https://github.com/workshopper/learnyounode", "text": "learnyounode"}]);
-//   });
-// });
+test('validateUrl',async() => {
+  await it('si ha ingresado un directorio deberia retornar un arreglo y un objeto', () => {
+   expect(mdLinks.validateUrl('../SCL009-md-links/test')).resolves.toEqual([{"file": "./prueba.md", "href": "https://github.com/workshopper/learnyounode", "text": "learnyounode"}]);
+   });
+ });
+ test('readStats',async() => {
+  await it('si ha ingresado un directorio deberia retornar un arreglo y un objeto', () => {
+   expect(mdLinks.readStats('../SCL009-md-links/test')).resolves.toEqual([{"file": "./prueba.md", "href": "https://github.com/workshopper/learnyounode", "text": "learnyounode"}]);
+   });
+ });
+ describe('readStats', async() => {
 
+  await it('si ha ingresado el archivo prueba.md deberia retornar un arreglo y un objeto', () => {
+    expect(mdLinks.readStats('./prueba.md')).resolves.toEqual([{"file": "./prueba.md", "href": "https://github.com/workshopper/learnyounode", "text": "learnyounode"}]);
+  });
+ })
 
 
  

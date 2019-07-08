@@ -20,19 +20,20 @@ return new Promise((resolve,reject)=> {
       href:href,
      text:text,
      file:pathUser
+    
+     
   })
 }
 marked(data,{renderer:renderer});
 resolve(links);
-validateUrl(links);
 readStats(links);
+validateUrl(links)
     }
   })
 })
 };
 
  function readUserDirectory(path){
-   console.log('entrando')
   FileHound.create()
   .paths(path)
   .ext('md')
@@ -62,33 +63,22 @@ function validateUrl(url){
           }
 
   function readStats(url){
-     console.log('stats')
-    let total =[]
-    let unique = 0
-    let broken = 0
-    url.forEach(function (element) {
-      if (process.argv[4]==='--status'||process.argv[4]==='--s')
-      fetch(element.href).then((res)=>{   
-        if(res.ok)
-        unique++
-        console.log(`Links Unicos: ${chalk.white(unique)}`);
-        if(element.status >= 400  ){
-          broken++
-          console.log(`Links Rotos: ${chalk.red(broken)}`)
-         }
-      })
-      .catch (error =>{
-          console.log(error.message)
-      })
-   })
-  }
+    return new Promise ((resolve,reject)=> {
+    if (process.argv[3]==='--s'||process.argv[3]==='--stats'||process.argv[4]==='--stats'||process.argv[4]==='--s'){
+        let totalLinks =0
+        let broken=0
+        let unique=0
+        let linksLength = url.map(element=> element.href);
+        totalLinks= linksLength.length;
+         unique = [...new Set(linksLength)].length;
+         broken = url.filter(element=>  element.status >= 400).length;
+         console.log(`Links Unicos: ${chalk.gray(unique)} || Links Rotos: ${chalk.red(broken)} || Links Totales ${chalk.gray(totalLinks)}`)
+           } 
+          })
+        }
+        
 
-
-
-
-
-
-
+          module.exports.readStats=readStats
            module.exports.validateUrl=validateUrl
            module.exports.readUserFile=readUserFile
            module.exports.readUserDirectory=readUserDirectory
