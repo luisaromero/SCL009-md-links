@@ -1,5 +1,5 @@
 {
-  "name": "md-links",
+  "name": "md-links-luisaromero",
   "version": "0.1.0",
   "dependencies": {
     "babel": "^6.23.0",
@@ -14,6 +14,7 @@
     "knex": "^ 0.15.2",
     "markdown-link-extractor": "^1.2.1",
     "marked": "^0.6.2",
+    "md-links-luisar": "^0.1.0",
     "node-fetch": "^2.6.0",
     "path": "^0.12.7",
     "require-path": "^0.3.0",

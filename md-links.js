@@ -66,13 +66,11 @@ function validateUrl(url){
     return new Promise ((resolve,reject)=> {
     if (process.argv[3]==='--s'||process.argv[3]==='--stats'||process.argv[4]==='--stats'||process.argv[4]==='--s'){
         let totalLinks =0
-        let broken=0
         let unique=0
         let linksLength = url.map(element=> element.href);
         totalLinks= linksLength.length;
          unique = [...new Set(linksLength)].length;
-         broken = url.filter(element=>  element.status >= 400).length;
-         console.log(`Links Unicos: ${chalk.gray(unique)} || Links Rotos: ${chalk.red(broken)} || Links Totales ${chalk.gray(totalLinks)}`)
+         console.log(`Links Unicos: ${chalk.gray(unique)} ||  Links Totales ${chalk.gray(totalLinks)}`)
            } 
           })
         }

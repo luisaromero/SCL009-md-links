@@ -16,11 +16,11 @@ fs.lstat(command, (err, stats) => {
       if(err){
         console.log(chalk.inverse.red('Ingresa archivo o directorio valido'));
       } else if (stats.isDirectory()){
-      mdLinks.readUserDirectory(pathUser)
+      mdLinks.readUserDirectory(pathFile)
 } else if (path.extname(pathUser) !== ".md") {
  console.log(chalk.inverse.red('No es un archivo extension md.'))
       }else{
-     mdLinks.readUserFile(pathUser)
+     mdLinks.readUserFile(pathFile)
        .then(res=> {
          console.log(res)
        }).catch(err=> {
